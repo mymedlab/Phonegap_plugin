@@ -1,0 +1,159 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <title></title>
+ 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+ <meta charset="utf-8">
+ 
+ 
+ <!-- iPad/iPhone specific css below, add after your main css >
+ <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
+ <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />
+ -->
+<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+     
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+     <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
+     <script type="text/javascript" charset="utf-8" src="tcPlugin.js"></script>
+     <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+     <script type="text/javascript">
+    var temp;
+    
+    
+    // If you want to prevent dragging, uncomment this section
+    /*
+     function preventBehavior(e)
+     {
+     e.preventDefault();
+     };
+     document.addEventListener("touchmove", preventBehavior, false);
+     */
+    
+    /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+     see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+     for more details -jm */
+    /*
+     function handleOpenURL(url)
+     {
+     // TODO: do something with the url passed in.
+     }
+     */
+    
+    function onBodyLoad()
+    {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    
+    /* When this function is called, Cordova has been initialized and is ready to roll */
+    /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
+     see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
+     for more details -jm */
+    function onDeviceReady()
+    {
+        // do your thing!
+      //  navigator.notification.alert("Cordova is working")
+  
+        
+    }   
+    
+    function onMuteButton()
+    {
+        var mytest  = new TwilioPlugin.Connection();
+        mytest.mute();
+    }
+    function onStatusButton()
+    {
+        var mytest  = new TwilioPlugin.Device();
+        mytest.status();
+    }
+    function onUnMuteButton()
+    {
+        var mytest  = new TwilioPlugin.Connection();
+        mytest.unmute();
+    }
+    
+    function onDisconnectButton()
+    {
+        alert(temp)
+        var mytest  = new TwilioPlugin.Connection();
+        mytest.disconnect(temp);
+    }
+    //A function for taking client phoneNumber.....
+    function verifyNumberFunc() {
+        var numberVal = document.getElementById('value').value;
+        temp=numberVal;
+        if (+numberVal > 0) {
+            //alert(numberVal);
+            var mytest  = new TwilioPlugin.Device();            
+            mytest.connect(numberVal);
+            return true;
+        }
+        else {
+            alert("Sorry, you need to enter a positive integer value, try again");
+            document.getElementById('error').innerHTML = "Sorry, you need to enter a positive interger value, try again";
+        }
+    }
+    
+     //Called on login button clicked.....
+    function loginButtonFunc() {
+        var handleName2 = document.getElementById('loginName').value;       
+        if (handleName2) {            
+                       getName(handleName2);
+            return true;
+        }
+        else {
+            alert("Sorry, enter a handle name");
+            document.getElementById('error').innerHTML = "You need to enter a handle name";
+        }
+    }
+ 
+    //A Html function for getting handle name for login.
+    function getName(params)
+    {    
+        var name=params;         
+        TwilioPlugin.install()
+        var mytest  = new TwilioPlugin.Device();      
+        mytest.setup(name);
+    }     
+   
+    </script>
+</head>
+<body onload="onBodyLoad()">
+    
+    <h1>Hey, it's TwilioPlugin!</h1>
+    <input type="text" maxlength="50" name="loginName" id='loginName' placeHolder="Enter Handle Name"/>
+    <input type="button" value="Login" onclick="loginButtonFunc()" />  
+    
+   <!-- <input type="text" maxlength="50" name="handle" id='handle' placeHolder="Enter Client Name to Connect" />
+    <input type="button" value="Connect" onclick="HandelerName()" />
+    -->
+    
+    <input type="text" maxlength="12" name="value" id='value' placeHolder="Enter phone number"/>
+    <input type="button" value="Call" onclick="verifyNumberFunc()" />
+      
+   
+    </p>
+    <p id="error"></p>
+    <p id="detspace"></p>        
+   
+    <button onclick="onMuteButton();">Click to Mute!</button>
+    <button onclick="onUnMuteButton();">Click to unmute</button>
+     <button onclick="onStatusButton();">Click to check Status..!</button>
+    <button onclick="onDisconnectButton();">Click to Disconnect...!</button>
+    <div class="app">           
+               <ul id="log">  </ul>        
+    </div>
+    
+    <!-- Adding JS file responsible for taking DeviceToken & handling/retreiving notifications...-->
+    
+    <script src="pushNotiService.js"></script>
+    <script type="text/javascript">
+    
+       console.log("Test " + app);
+        app.initialize();
+        </script>
+</body>
+      
+     </html>
+   
