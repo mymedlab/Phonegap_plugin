@@ -8,80 +8,24 @@
     <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="tcPlugin.js"></script>
     <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
-    <script type="text/javascript">
-
-var temp;
-function onBodyLoad() {
-  document.addEventListener("deviceready", onDeviceReady, false);
-}
-
-function onDeviceReady() {
-}   
-
-function onMuteButton() {
-  var mytest  = new TwilioPlugin.Connection();
-  mytest.mute();
-}
-
-function onStatusButton() {
-  var mytest  = new TwilioPlugin.Connection();
-  mytest.status();
-}
-
-function onUnMuteButton() {
-  var mytest  = new TwilioPlugin.Connection();
-  mytest.unmute();
-}
-
-function onDisconnectButton() {
-  var mytest  = new TwilioPlugin.Connection();
-  mytest.disconnect(temp);
-}
-
-function verifyNumberFunc() {
-  var myVar  = new TwilioPlugin.Device();
-  myVar.invite();
-}
-
-function loginButtonFunc() {
-  var handleName2 = document.getElementById('loginName').value;       
-  if (handleName2) {            
-    getName(handleName2);
-    return true;
-  } else {
-    alert("Sorry, enter a handle name");
-    document.getElementById('error').innerHTML = "You need to enter a handle name";
-  }
-}
-
-function getName(params) {    
-  var name= params;
-  TwilioPlugin.install();
-  var mytest = new TwilioPlugin.Device();
-  mytest.setup(name);
-}
-</script>
-</head>
-<body onload="onBodyLoad()">
-  <input type="text" maxlength="50" name="loginName" id='loginName' placeholder="Enter Handle Name"/>
-  <input type="button" id='login' value="Login" onclick="loginButtonFunc()" />  
-  <input type="text" id="number" name="number"
-  placeholder="Enter a phone number or client to call"/>
-  <input type="button" value="Call" onclick="verifyNumberFunc()" />
-</p>
-<p id="error"></p>
-<p id="detspace"></p>        
-<button onclick="onMuteButton();">Click to Mute!</button>
-<button onclick="onUnMuteButton();">Click to unmute</button>
-<button onclick="onStatusButton();">Click to check Status..!</button>
-<button onclick="onDisconnectButton();">Click to Disconnect...!</button>
-<div class="app">           
-  <ul id="log">  <li>Welcome to Twilio....</li> </ul>
-  <ul id="people"></ul>
-</div>
-<script src="pushNotiService.js"></script>
-<script type="text/javascript">
-  app.initialize();         
-</script>
+    <script src="pushNotiService.js"></script>
+  </head>
+  <body>
+    <input type="text" maxlength="50" name="loginName" id='loginName' placeholder="Enter Handle Name"/>
+    <input type="button" id='login' value="Login" />  
+    <input type="text" id="number" name="number"
+    placeholder="Enter a phone number or client to call"/>
+    <input type="button" value="Call" id="call" />
+  </p>
+  <p id="error"></p>
+  <p id="detspace"></p>        
+  <button id='mute'>Click to Mute!</button>
+  <button id='unmute'>Click to unmute</button>
+  <button id='status'>Click to check Status..!</button>
+  <button id='hangup'>Click to hangup...!</button>
+  <div class="app">           
+    <ul id="log">  <li>Welcome to Twilio....</li> </ul>
+    <ul id="people"></ul>
+  </div>
 </body>
 </html>
