@@ -1,3 +1,7 @@
+var log = function(text) {
+  $('#log').text(text);
+};
+
 var TwilioPlugin;
 (function() {
  
@@ -14,10 +18,6 @@ var TwilioPlugin;
             return this;
         }
     }
- function log(text) {
- $('#log').text(text);
- }
-
 TwilioPlugin.Device.prototype.setup = function(param)
 { 
     // Take a token and instantiate a new device object

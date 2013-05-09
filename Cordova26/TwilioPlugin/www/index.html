@@ -1,156 +1,87 @@
- <!DOCTYPE html>
- <html>
- <head>
- <title></title>
- 
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
- <meta charset="utf-8">
- 
- 
- <!-- iPad/iPhone specific css below, add after your main css >
- <link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />
- <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />
- -->
-<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
-     
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-     <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
-     <script type="text/javascript" charset="utf-8" src="tcPlugin.js"></script>
-     <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
-     <script type="text/javascript">
-    var temp;
-    
-    
-    // If you want to prevent dragging, uncomment this section
-    /*
-     function preventBehavior(e)
-     {
-     e.preventDefault();
-     };
-     document.addEventListener("touchmove", preventBehavior, false);
-     */
-    
-    /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-     see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-     for more details -jm */
-    /*
-     function handleOpenURL(url)
-     {
-     // TODO: do something with the url passed in.
-     }
-     */
-    
-    function onBodyLoad()
-    {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-    
-    /* When this function is called, Cordova has been initialized and is ready to roll */
-    /* If you are supporting your own protocol, the var invokeString will contain any arguments to the app launch.
-     see http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
-     for more details -jm */
-    function onDeviceReady()
-    {
-        // do your thing!
-      //  navigator.notification.alert("Cordova is working")
-  
-        
-    }   
-    
-    function onMuteButton()
-    {
-        var mytest  = new TwilioPlugin.Connection();
-        mytest.mute();
-    }
-    function onStatusButton()
-    {
-        
-        var mytest  = new TwilioPlugin.Connection();
-        mytest.status();
-    }
-         
-    function onUnMuteButton()
-    {
-        var mytest  = new TwilioPlugin.Connection();
-        mytest.unmute();
-    }
-    
-    function onDisconnectButton()
-    {
-        
-        var mytest  = new TwilioPlugin.Connection();
-        mytest.disconnect(temp);
-    }
-         
-    //A function for taking client phoneNumber.....
-    function verifyNumberFunc()
-    {
-        var myVar  = new TwilioPlugin.Device();
-        myVar.invite();
-    }
-    
-     //Called on login button clicked.....
-    function loginButtonFunc() {
-        var handleName2 = document.getElementById('loginName').value;       
-        if (handleName2) {            
-                       getName(handleName2);
-            return true;
-        }
-        else {
-            alert("Sorry, enter a handle name");
-            document.getElementById('error').innerHTML = "You need to enter a handle name";
-        }
-    }
- 
-    //A Html function for getting handle name for login.
-    function getName(params)
-    {    
-        var name=params;         
-        TwilioPlugin.install()
-        var mytest  = new TwilioPlugin.Device();      
-        mytest.setup(name);
-    }   
-         
-         
-   
-    </script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="tcPlugin.js"></script>
+    <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+    <script type="text/javascript">
+
+var temp;
+function onBodyLoad() {
+  document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+function onDeviceReady() {
+}   
+
+function onMuteButton() {
+  var mytest  = new TwilioPlugin.Connection();
+  mytest.mute();
+}
+
+function onStatusButton() {
+  var mytest  = new TwilioPlugin.Connection();
+  mytest.status();
+}
+
+function onUnMuteButton() {
+  var mytest  = new TwilioPlugin.Connection();
+  mytest.unmute();
+}
+
+function onDisconnectButton() {
+  var mytest  = new TwilioPlugin.Connection();
+  mytest.disconnect(temp);
+}
+
+function verifyNumberFunc() {
+  var myVar  = new TwilioPlugin.Device();
+  myVar.invite();
+}
+
+function loginButtonFunc() {
+  var handleName2 = document.getElementById('loginName').value;       
+  if (handleName2) {            
+    getName(handleName2);
+    return true;
+  } else {
+    alert("Sorry, enter a handle name");
+    document.getElementById('error').innerHTML = "You need to enter a handle name";
+  }
+}
+
+function getName(params) {    
+  var name= params;
+  TwilioPlugin.install();
+  var mytest = new TwilioPlugin.Device();
+  mytest.setup(name);
+}
+</script>
 </head>
 <body onload="onBodyLoad()">
-    
-    <h1>Hey, it's TwilioPlugin!</h1>
-    <input type="text" maxlength="50" name="loginName" id='loginName' placeHolder="Enter Handle Name"/>
-    <input type="button" value="Login" onclick="loginButtonFunc()" />  
-      
-     
-    <input type="text" id="number" name="number"
-    placeholder="Enter a phone number or client to call"/>
-    <input type="button" value="Call" onclick="verifyNumberFunc()" />
-      
-   
-    </p>
-    <p id="error"></p>
-    <p id="detspace"></p>        
-   
-    <button onclick="onMuteButton();">Click to Mute!</button>
-    <button onclick="onUnMuteButton();">Click to unmute</button>
-     <button onclick="onStatusButton();">Click to check Status..!</button>
-    <button onclick="onDisconnectButton();">Click to Disconnect...!</button>
-       
-    
-    <div class="app">           
-    <ul id="log">  <li>Welcome TO Twilio....</li> </ul>
-        
-        <ul id="people"></ul>
-    </div>
-    
-    <!-- Adding JS file responsible for taking DeviceToken & handling/retreiving notifications...-->
-    
-    <script src="pushNotiService.js"></script>
-    <script type="text/javascript">
-       
-        app.initialize();         
-    </script>
+  <input type="text" maxlength="50" name="loginName" id='loginName' placeholder="Enter Handle Name"/>
+  <input type="button" id='login' value="Login" onclick="loginButtonFunc()" />  
+  <input type="text" id="number" name="number"
+  placeholder="Enter a phone number or client to call"/>
+  <input type="button" value="Call" onclick="verifyNumberFunc()" />
+</p>
+<p id="error"></p>
+<p id="detspace"></p>        
+<button onclick="onMuteButton();">Click to Mute!</button>
+<button onclick="onUnMuteButton();">Click to unmute</button>
+<button onclick="onStatusButton();">Click to check Status..!</button>
+<button onclick="onDisconnectButton();">Click to Disconnect...!</button>
+<div class="app">           
+  <ul id="log">  <li>Welcome to Twilio....</li> </ul>
+  <ul id="people"></ul>
+</div>
+<script src="pushNotiService.js"></script>
+<script type="text/javascript">
+  app.initialize();         
+</script>
 </body>
-      
-     </html>
-   
+</html>

@@ -518,8 +518,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Team Support (UX67RXPQ2D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Team Support (UX67RXPQ2D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David  Clymer (AHPCDRC32D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David  Clymer (AHPCDRC32D)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -554,8 +554,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = TwilioPlugin;
-				PROVISIONING_PROFILE = "1E845A15-5976-4EDC-8BA9-EFA5AFC258D8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E845A15-5976-4EDC-8BA9-EFA5AFC258D8";
+				PROVISIONING_PROFILE = "98B9B6E7-ECA7-4103-8025-70A1A9401B45";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98B9B6E7-ECA7-4103-8025-70A1A9401B45";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -565,8 +565,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Team Support (UX67RXPQ2D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Team Support (UX67RXPQ2D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: David  Clymer (AHPCDRC32D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David  Clymer (AHPCDRC32D)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwilioPlugin/TwilioPlugin-Prefix.pch";
@@ -594,8 +594,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = TwilioPlugin;
-				PROVISIONING_PROFILE = "1E845A15-5976-4EDC-8BA9-EFA5AFC258D8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E845A15-5976-4EDC-8BA9-EFA5AFC258D8";
+				PROVISIONING_PROFILE = "98B9B6E7-ECA7-4103-8025-70A1A9401B45";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "98B9B6E7-ECA7-4103-8025-70A1A9401B45";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
