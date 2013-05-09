@@ -68,7 +68,7 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    NSLog(@"sadnalsd");
+    
     [[UIApplication sharedApplication]registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 
@@ -139,113 +139,7 @@
 {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
-/*-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-  /*
-	deviceid=[NSUserDefaults standardUserDefaults];
-    if ([deviceid objectForKey:@"devicetoken" ]==NULL)
-    {
-        [deviceid setValue:deviceToken forKey:@"devicetoken"];
-        
-        NSLog(@"get device token-->%@",deviceToken);
-        
-        NSString *strToken = [NSString stringWithFormat:@"%@",deviceToken];
-        NSString *strTokenWithoutSpaces = [[[NSString alloc]init]autorelease];
-        strTokenWithoutSpaces = [strToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-        strTokenWithoutSpaces = [strTokenWithoutSpaces stringByReplacingOccurrencesOfString:@"<" withString:@""];
-        strTokenWithoutSpaces = [strTokenWithoutSpaces stringByReplacingOccurrencesOfString:@">" withString:@""];
-        NSLog(@"strTokenWithoutSpaces%@",strTokenWithoutSpaces);
-        
-        // tokenStr=[[NSString stringWithString:str]retain];
-        [[NSUserDefaults standardUserDefaults] setValue:strTokenWithoutSpaces forKey:@"TokenString"];
-        
-    }
-    
-    else
-    {
-        NSString *getdevice=[NSString stringWithFormat:@"%@",[deviceid objectForKey:@"devicetoken"]];
-        if([[NSString stringWithFormat:@"%@",deviceToken] isEqualToString:getdevice])
-        {
-            NSLog(@"get device token-->%@",deviceToken);
-        }
-        else
-        {
-            
-            
-            NSLog(@"get device token-->%@",deviceToken);
-            
-            
-            //This code is for deleting the device token on server.
-            NSString *strToken1 = [NSString stringWithFormat:@"%@",[deviceid objectForKey:@"devicetoke"]];
-            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"devicetoke"];
-            NSString *strTokenWithoutSpaces1 = [[[NSString alloc]init]autorelease];
-            strTokenWithoutSpaces1 = [strToken1 stringByReplacingOccurrencesOfString:@" " withString:@""];
-            strTokenWithoutSpaces1 = [strTokenWithoutSpaces1 stringByReplacingOccurrencesOfString:@"<" withString:@""];
-            strTokenWithoutSpaces1 = [strTokenWithoutSpaces1 stringByReplacingOccurrencesOfString:@">" withString:@""];
-            NSLog(@"strTokenWithoutSpaces2%@",strTokenWithoutSpaces1);
-            
-            
-            [deviceid setValue:deviceToken forKey:@"devicetoken"];
-            //  NSLog(@"Return data = %@",returnData1);
-            
-            
-            
-            
-            //this is for updating the device token
-            
-            NSString *strToken = [NSString stringWithFormat:@"%@",deviceToken];
-            NSString *strTokenWithoutSpaces = [[[NSString alloc]init]autorelease];
-            strTokenWithoutSpaces = [strToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-            strTokenWithoutSpaces = [strTokenWithoutSpaces stringByReplacingOccurrencesOfString:@"<" withString:@""];
-            strTokenWithoutSpaces = [strTokenWithoutSpaces stringByReplacingOccurrencesOfString:@">" withString:@""];
-            NSLog(@"strTokenWithoutSpaces3%@",strTokenWithoutSpaces);
-            
-        }
-    }
-    
-}
--(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    NSDictionary *message=[[NSDictionary alloc]initWithDictionary:[userInfo objectForKey:@"aps"]];
-    NSLog(@"alert-->%@",message);
-    NSLog(@"get the dictionary---->%@",userInfo);
-    NSString *string=[[NSString alloc]initWithFormat:@"%@",[message objectForKey:@"alert"]];
-    UIApplicationState state = [application applicationState];
-    NSLog(@"%@",string);
-    [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"alertMessage"];
-    // getMessage = string;
-    // NSLog(@"%@", getMessage);
-    if (state == UIApplicationStateActive)
-    {
-        
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Call-Center" message:string delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Open", nil] autorelease];
-        [alert setTag: 1];
-        [alert show];
-        //  NSLog(@"%@",message1);
-    }
-    
-    else if(state==UIApplicationStateBackground)
-    {
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"CallCenter" message:string delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Open", nil] autorelease];
-        [alert setTag: 2];
-        [alert show];
-        NSLog(@"%@",string);
-        
-    }
-    else if(state==UIApplicationStateInactive) {
-        
-        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Call-Center" message:string delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Open", nil] autorelease];
-        [alert setTag: 3];
-        [alert show];
-        NSLog(@"%@",string);
-        
-    }
-    
-}
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    NSLog(@"Failed to get token, error: %@", error);
-}*/
+// Push Notification Delegate functions......
 - (void)application:(UIApplication*)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
     PushNotification* pushHandler = [self.viewController getCommandInstance:@"PushNotification"];

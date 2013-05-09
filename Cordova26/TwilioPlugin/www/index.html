@@ -64,9 +64,11 @@
     }
     function onStatusButton()
     {
-        var mytest  = new TwilioPlugin.Device();
+        
+        var mytest  = new TwilioPlugin.Connection();
         mytest.status();
     }
+         
     function onUnMuteButton()
     {
         var mytest  = new TwilioPlugin.Connection();
@@ -75,24 +77,16 @@
     
     function onDisconnectButton()
     {
-        alert(temp)
+        
         var mytest  = new TwilioPlugin.Connection();
         mytest.disconnect(temp);
     }
+         
     //A function for taking client phoneNumber.....
-    function verifyNumberFunc() {
-        var numberVal = document.getElementById('value').value;
-        temp=numberVal;
-        if (+numberVal > 0) {
-            //alert(numberVal);
-            var mytest  = new TwilioPlugin.Device();            
-            mytest.connect(numberVal);
-            return true;
-        }
-        else {
-            alert("Sorry, you need to enter a positive integer value, try again");
-            document.getElementById('error').innerHTML = "Sorry, you need to enter a positive interger value, try again";
-        }
+    function verifyNumberFunc()
+    {
+        var myVar  = new TwilioPlugin.Device();
+        myVar.invite();
     }
     
      //Called on login button clicked.....
@@ -115,7 +109,9 @@
         TwilioPlugin.install()
         var mytest  = new TwilioPlugin.Device();      
         mytest.setup(name);
-    }     
+    }   
+         
+         
    
     </script>
 </head>
@@ -124,12 +120,10 @@
     <h1>Hey, it's TwilioPlugin!</h1>
     <input type="text" maxlength="50" name="loginName" id='loginName' placeHolder="Enter Handle Name"/>
     <input type="button" value="Login" onclick="loginButtonFunc()" />  
-    
-   <!-- <input type="text" maxlength="50" name="handle" id='handle' placeHolder="Enter Client Name to Connect" />
-    <input type="button" value="Connect" onclick="HandelerName()" />
-    -->
-    
-    <input type="text" maxlength="12" name="value" id='value' placeHolder="Enter phone number"/>
+      
+     
+    <input type="text" id="number" name="number"
+    placeholder="Enter a phone number or client to call"/>
     <input type="button" value="Call" onclick="verifyNumberFunc()" />
       
    
@@ -141,18 +135,21 @@
     <button onclick="onUnMuteButton();">Click to unmute</button>
      <button onclick="onStatusButton();">Click to check Status..!</button>
     <button onclick="onDisconnectButton();">Click to Disconnect...!</button>
+       
+    
     <div class="app">           
-               <ul id="log">  </ul>        
+    <ul id="log">  <li>Welcome TO Twilio....</li> </ul>
+        
+        <ul id="people"></ul>
     </div>
     
     <!-- Adding JS file responsible for taking DeviceToken & handling/retreiving notifications...-->
     
     <script src="pushNotiService.js"></script>
     <script type="text/javascript">
-    
-       console.log("Test " + app);
-        app.initialize();
-        </script>
+       
+        app.initialize();         
+    </script>
 </body>
       
      </html>

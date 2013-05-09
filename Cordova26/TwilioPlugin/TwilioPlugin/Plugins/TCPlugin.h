@@ -16,7 +16,7 @@
 #import "CDVPlugin.h"
 #endif
 */
-@interface TCPlugin : CDVPlugin <TCDeviceDelegate, TCConnectionDelegate,UITableViewDataSource,UITableViewDelegate> { }
+@interface TCPlugin : CDVPlugin <TCDeviceDelegate, TCConnectionDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate> { }
 
 # pragma mark device delegate method
 -(void)device:(TCDevice *)device didStopListeningForIncomingConnections:(NSError *)error;
@@ -37,8 +37,11 @@
 -(void)connect:(NSArray *)arguments withDict:(NSMutableDictionary *)options;
 -(void)disconnectAll:(NSArray *)arguments withDict:(NSMutableDictionary *)options;
 -(void)acceptConnection:(NSArray *)arguments withDict:(NSMutableDictionary *)options;
+-(void)rejectConnection:(NSArray *)arguments withDict:(NSMutableDictionary *)options;
 -(void)disconnectConnection:(NSArray *)arguments withDict:(NSMutableDictionary *)options;
 -(void)muteConnection:(NSArray *)arguments withDict:(NSMutableDictionary *)options;
 -(void)sendDigits:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+
+
 
 @end

@@ -194,7 +194,7 @@ id messageFromMultipart(NSArray* theMessages)
 - (NSString*)toSuccessCallbackString:(NSString*)callbackId
 {
     NSString* successCB = [NSString stringWithFormat:@"cordova.callbackSuccess('%@',%@);", callbackId, [self toJSONString]];
-    NSLog(@"successCB%@",successCB);
+    //NSLog(@"successCB%@",successCB);
 
     if ([[self class] isVerbose]) {
         NSLog(@"PluginResult toSuccessCallbackString: %@", successCB);

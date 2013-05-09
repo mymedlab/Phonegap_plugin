@@ -128,7 +128,7 @@ NSString* const CDVLocalNotification = @"CDVLocalNotification";
 
 - (NSString*)writeJavascript:(NSString*)javascript
 {
-    NSLog(@"JAva script%@",javascript);
+    //NSLog(@"Kirti Script%@",javascript);
     return [self.webView stringByEvaluatingJavaScriptFromString:javascript];
 }
 

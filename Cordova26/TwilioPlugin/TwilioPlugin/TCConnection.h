@@ -95,6 +95,8 @@ extern NSString* const TCConnectionIncomingParameterCallSIDKey; /**< NSString re
  */
 -(void)reject;
 
+
+
 /** Disconnect the connection. 
  
  Calling this method on a TCConnection that is in the TCConnectionStateDisconnected state will have no effect.
