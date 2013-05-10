@@ -176,12 +176,10 @@ var TwilioPlugin;
 
   TwilioPlugin.Device.presence = function(pres) {
     if (pres.available == 1) { 
-      $("<li>", {id: pres.from, text: pres.from}).on('click', function () {
+      $("<li id='" + pres.from + "'><a class='km-listview-link' data-role='listview-link'>" + pres.from + "</a></li>").on('click', function () {
         TwilioPlugin.Device.connect(pres.from);
       }).prependTo("#contacts ul");
-      if(pres.from  == window.client)
-      {
-        console.log("Remove"+pres.from);
+      if (pres.from  == window.client) {
         $("#" + pres.from).remove();
       } 
     } else {        

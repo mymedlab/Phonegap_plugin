@@ -4,7 +4,10 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
     <meta charset="utf-8">
+     <link href="css/kendo.common.min.css" rel="stylesheet" type='text/css' />
+    <link href="css/kendo.default.min.css" rel="stylesheet" type='text/css' />
     <link rel='stylesheet' href='css/kendo.mobile.ios.min.css' type='text/css' />
+    <link rel='stylesheet' href='css/index.css' type='text/css' />
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/kendo.mobile.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
@@ -25,13 +28,12 @@
     <button id='unmute'>Click to unmute</button>
     <button id='status'>Click to check Status..!</button>
     <button id='hangup'>Click to hangup...!</button>
-    <div class="app">           
-      <ul id="log">  <li>Welcome to Twilio....</li> </ul>
-      <ul id="people"></ul>
-    </div>
   </div> 
   <div data-role="view" data-layout="overview-layout" data-title="Contacts" id="contacts"> 
-    <ul data-role='listview'></ul>
+    <ul data-role='listview' data-style='inset'>
+      <li><a>John</a></li>
+      <li><a>Peter</a></li>
+    </ul>
   </div> 
   <div data-role="view" data-layout="overview-layout" data-title="Account" id="account"> 
     <ul data-role='listview'></ul>
@@ -48,5 +50,8 @@
       </div> 
     </footer> 
   </div> 
+  <script>
+    //var app = new kendo.mobile.Application($(document).body); 
+  </script>
 </body>
 </html>
