@@ -6,6 +6,7 @@ CallCenter = function() {
   };
 
   this.bindEvents = function() {
+    var app = new kendo.mobile.Application($(document).body); 
     $(document).on('click', '#login', that.login);
     $(document).on('click', '#mute', that.mute);
     $(document).on('click', '#unmute', that.unmute);
@@ -177,7 +178,7 @@ var TwilioPlugin;
     if (pres.available == 1) { 
       $("<li>", {id: pres.from, text: pres.from}).on('click', function () {
         TwilioPlugin.Device.connect(pres.from);
-      }).prependTo("#people");
+      }).prependTo("#contacts ul");
       if(pres.from  == window.client)
       {
         console.log("Remove"+pres.from);

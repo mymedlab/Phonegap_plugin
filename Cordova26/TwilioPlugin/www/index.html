@@ -4,27 +4,49 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='css/kendo.mobile.ios.min.css' type='text/css' />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/kendo.mobile.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="tcPlugin.js"></script>
     <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
   </head>
   <body>
-    <input type="text" maxlength="50" name="loginName" id='loginName' placeholder="Enter Handle Name"/>
-    <input type="button" id='login' value="Login" />  
-    <input type="text" id="number" name="number"
-    placeholder="Enter a phone number or client to call"/>
-    <input type="button" value="Call" id="call" />
-  </p>
-  <p id="error"></p>
-  <p id="detspace"></p>        
-  <button id='mute'>Click to Mute!</button>
-  <button id='unmute'>Click to unmute</button>
-  <button id='status'>Click to check Status..!</button>
-  <button id='hangup'>Click to hangup...!</button>
-  <div class="app">           
-    <ul id="log">  <li>Welcome to Twilio....</li> </ul>
-    <ul id="people"></ul>
-  </div>
+    <div data-role="view" data-layout="overview-layout" data-title="Phone" id="phone"> 
+      <input type="text" maxlength="50" name="loginName" id='loginName' placeholder="Enter Handle Name"/>
+      <input type="button" id='login' value="Login" />  
+      <input type="text" id="number" name="number"
+      placeholder="Enter a phone number or client to call"/>
+      <input type="button" value="Call" id="call" />
+    </p>
+    <p id="error"></p>
+    <p id="detspace"></p>        
+    <button id='mute'>Click to Mute!</button>
+    <button id='unmute'>Click to unmute</button>
+    <button id='status'>Click to check Status..!</button>
+    <button id='hangup'>Click to hangup...!</button>
+    <div class="app">           
+      <ul id="log">  <li>Welcome to Twilio....</li> </ul>
+      <ul id="people"></ul>
+    </div>
+  </div> 
+  <div data-role="view" data-layout="overview-layout" data-title="Contacts" id="contacts"> 
+    <ul data-role='listview'></ul>
+  </div> 
+  <div data-role="view" data-layout="overview-layout" data-title="Account" id="account"> 
+    <ul data-role='listview'></ul>
+  </div> 
+  <div data-role="layout" data-id="overview-layout"> 
+    <header data-role="header"> 
+      <div data-role="navbar">Call Center</div> 
+    </header> 
+    <footer data-role="footer"> 
+      <div data-role="tabstrip">
+        <a data-icon="sounds" href='#phone'>Phone</a>
+        <a data-icon="contacts" href='#contacts'>Contacts</a>
+        <a data-icon="settings" href='#account'>Account</a>
+      </div> 
+    </footer> 
+  </div> 
 </body>
 </html>
